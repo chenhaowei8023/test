@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--NameSpace 任意起名字，就是这个Mapper.xml的身份标签-->
+<mapper namespace="aaa">
+
+    <!--sql语句是select类型，标签用select，
+    id随便起，是这条sql语句的身份标签，一个xml文件里可以有多个sql语句，但是id不能重复
+
+    resultType是执行sql的结果，mybatis底层会把statement执行sql的结果集解析出来。用set方法封装到User对象里，因为User的变量名和数据库列名一样，所以通过反射setXx可以封装成功
+   -->
+
+    <select id="cc" resultType="com.suo.mapper.User">
+        select * from user where id = 1
+    </select>
+</mapper>

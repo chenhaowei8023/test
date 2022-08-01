@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+
+            <!--dataSource的类型可以配置成其内置类型之一，如UNPOOLED、POOLED、JNDI。
+                UNPOOLED，mybaties会为每一个数据库操作创建一个新的连接，并关闭它。该方式适用于只有小规模数量并发用户的简单应用程序上。
+                POOLED，mybaties会创建一个数据库连接池，连接池的一个连接将会被用作数据库操作。一旦数据库操作完成，mybaties会将此连接返回给连接池。在开发或测试环境中经常用到此方式。
+                JNDI。mybaties会从在应用服务器向配置好的JNDI数据源DataSource获取数据库连接。在生产环境中优先考虑这种方式。-->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/test?serverTimezone=UTC"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+
+    <mappers>
+        <!-- 把上面的Mapper.xml 注册进来，路径写在resources目录下的路径-->
+        <mapper resource="com/suo/mapper/UserMapper.xml"/>
+        <mapper resource="com/suo/mapper/PlayMapper.xml"/>
+    </mappers>
+</configuration>
